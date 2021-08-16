@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import request from '@/utils/request.ts'
+// import request from '@/utils/request.ts'
 
 // request({
 //   method: 'GET',
@@ -21,7 +21,4 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.text {
-  color: $warning-color;
-}
 </style>
