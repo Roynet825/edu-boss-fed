@@ -11,13 +11,13 @@
       <span class="el-dropdown-link">
         <el-avatar
           :size="40"
-          src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png"
+          :src="user.portrait"
         ></el-avatar>
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>用户ID</el-dropdown-item>
-        <el-dropdown-item divided>退出</el-dropdown-item>
+        <el-dropdown-item> {{ user.userName }} </el-dropdown-item>
+        <el-dropdown-item divided @click.native="logout">退出</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -25,8 +25,30 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { getUserInfo } from '@/services/user.ts'
 
 export default Vue.extend({
+  name: 'AppHeader',
+  data () {
+    return {
+      user: {}
+    }
+  },
+  created () {
+    this.loadUserInfo()
+  },
+  methods: {
+    async loadUserInfo () {
+      const { data } = await getUserInfo()
+      this.user = data.content
+    },
+    logout () {
+      this.$store.commit('setUser', null)
+      this.$router.push({
+        name: 'login'
+      })
+    }
+  }
 })
 </script>
 
