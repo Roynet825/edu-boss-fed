@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getEditMenuInfo, saveOrUpdate } from '@/services/menu.ts'
+import { getEditMenuInfo, saveOrUpdate } from '@/services/menu'
 
 export default Vue.extend({
   name: 'MenuEditor',
